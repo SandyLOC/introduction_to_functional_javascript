@@ -8,7 +8,11 @@ Before getting started, make sure that you have a JavaScript console open (like 
 
 ```js
 var squared = function(numbers) {
-  // your code here
+  // your code here:   
+  return numbers.map(function(number) {
+  return number * number;
+  });
+ //
 };
 
 squared([1, 2, 3, 4, 5]); // => [1, 4, 9, 16, 25]
@@ -18,7 +22,8 @@ squared([1, 2, 3, 4, 5]); // => [1, 4, 9, 16, 25]
 
 ```js
 var pluralize = function(words) {
-
+// your code here:
+  return words.map(word => word + "s");
 };
 
 pluralize(['dog', 'cat', 'worm', 'kyle']); // => ['dogs', 'cats', 'worms', 'kyles']
