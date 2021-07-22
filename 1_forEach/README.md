@@ -16,8 +16,12 @@ var sumImperative = function(array) {
 };
 
 var sumDeclarative = function(array) {
-  // your code here
+  // your code here:
+  var result = 0;
+  array.forEach(num => result += num);
+  return result;
 };
+sumDeclarative([1, 3, 5]);
 ```
 
 2. Refactor the following imperative code to be declarative by using the `forEach()` native array method instead of a `for` loop:
@@ -34,15 +38,30 @@ var maxNumImperative = function(array) {
 };
 
 var maxNumDeclarative = function(array) {
-  // your code here
+  // your code here:
+  var max = 0;
+  array.forEach(function(num){
+    if(num > max) {
+      max = num;
+    }
+  });
+  return max;
 };
+maxNumDeclarative([1, 3, 5]);
 ```
 
 3. Write a function called `min` that find the smallest number in an array of numbers and returns it.
 
 ```js
 var min = function(array) {
-  // your code here
+  // your code here:
+  small = array[0];
+  array.forEach(function(num) {
+    if (num < small) {
+      small = num;
+    }
+  });
+  return small;
 };
 
 min([100, 54, 73, 8, 12, 3]); // => 3
@@ -52,7 +71,8 @@ min([100, 54, 73, 8, 12, 3]); // => 3
 
 ```js
 var printNames = function(names) {
-  // your code here
+  // your code here:
+  names.forEach(name => console.log(name));
 };
 
 printNames(['Tom', 'Jerry', 'Arnold', 'Casper']);
@@ -80,6 +100,19 @@ Try to write all of these exercises using .forEach() rather than `for` or `while
 
   Use `split` to write a function `longestWord` that takes a string as an
   argument and returns the longest word.
+    ```js
+    // your code here:
+  var arr = "the quick brown fox jumped over the lazy dog".split(" ");
+  var longWord = arr[0];
+  function longestWord(arr) {
+     arr.forEach(function(word) {
+      if(word.length >= longWord.length) {
+        longWord = word;
+      }
+    });
+    return longWord;
+  };
+  longestWord(arr);
 
 2. Write a function `remove` that accepts an *array* and an *element*, and
    returns an array with all ocurrences of *element* removed.
