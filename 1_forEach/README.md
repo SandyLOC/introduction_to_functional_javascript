@@ -113,35 +113,112 @@ Try to write all of these exercises using .forEach() rather than `for` or `while
     return longWord;
   };
   longestWord(arr);
+    ```
 
 2. Write a function `remove` that accepts an *array* and an *element*, and
    returns an array with all ocurrences of *element* removed.
 
    ```js
    function remove(array, element) {
-     // your code here
+     // your code here:
+     var newArray = [];
+     array.forEach(function(num) {
+       if (num != element) {
+         newArray.push(num);
+       }
+     });
+     return newArray;
    }
    remove([1, 3, 6, 2, 3], 3); // => [1, 6, 2]
    ```
 
 3. Write a function `evens` that accepts an array as an argument, and returns
    an array consisting of all of the *even* numbers in that array.
+   
+     ```js
+    var even = [];
+    var evens = function(array) {
+      array.forEach(function(num){
+        if (num % 2 == 0) {
+          even.push(num);
+        }
+      });
+    return even;
+    };
+    evens([0, 1, 3, 6, 2, 3, 28, 44]);//=>[ 0, 6, 2, 28, 44 ]
+    ```
 
 ### Exercises Continued
 
 1. Write a function called `average` that takes an array of numbers as a
    parameter and returns the *average* of those numbers.
+   
+   ```js
+   var average = function(array) {
+    var i = 0;
+    var sum = 0;
+    array.forEach(function(num) {
+     sum += num;
+      i += 1;
+    });
+   return sum/i;
+   };
+   average([1, 3, 6, 2, 3]);//=> 3
+   ```
 
 2. Write a function `shortestWord` that works like `longestWord`, but returns
    the *shortest* word instead.
+   //your code goes here:
+    ```js
+    var arr = "the quick brown fox jumped over a lazy dog".split(" ");
+    var shortestWord = function(arr) {
+    var short = arr[0];
+      arr.forEach(function(word) {
+        if(word.length <= short.length) {
+          short = word;
+        }
+      });
+      return short;
+    };
+    shortestWord(arr);//=> a
+    ```
 
 3. Write a function `countChar` that takes two arguments: any string, and a
    *character* (string of one letter), and returns the number of times that the
    character occurs in the string.
 
+   ```js
+    //Your code goes here:
+    var arr = "supercalifragilisticexpialidoucious".split("");
+    var countChar = function(arr, char) {
+    counter = 0;
+      arr.forEach(function(el) {
+        if(el == char) {
+          counter += 1;
+        }
+      });
+      return counter;
+    };
+    countChar(arr, "i");//=> 7
+    ```
 4. Write a function `evenLengthWords` that takes an array of *strings* as an
    argument, and returns an array of just the words that have an even length.
 
+   ```js
+    //Your code goes here:
+    var arr = "the quick brown fox jumped over a lazy dog".split(" ");
+    var evenLengthWords = function(arr) {
+    evens = [];
+      arr.forEach(function(word) {
+        if (word.length % 2 == 0) {
+          evens.push(word);
+        }
+      });
+      return evens;
+    };
+    evenLengthWords(arr);//=> [jumped, over, lazy]
+    ```
+    
 ### Advanced
 
 1. Read about the `join` method on
