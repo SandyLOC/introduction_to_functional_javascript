@@ -121,14 +121,27 @@ componentMSpells(spells);
 
 ```js
 var paladinSpells = function(spells) {
-  // your code here
+  // your code here:
+  var component = spells.filter(function(spell){
+    var check = spell.classes.filter(comp => comp.name == "Paladin"); 
+    if(check[0] !== undefined){
+      return true;
+    }
+  });
+  return component;
 };
+
+paladinSpells(spells);
 ```
 
 4. Write a function that returns a new array of spells that can be cast instantaneously:
 
 ```js
 var instantSpells = function(spells) {
-  // your code here
+  // your code here:
+  var component = spells.filter(spell => spell.duration == "Instantaneous");
+  return component;
 };
+
+instantSpells(spells);
 ```
