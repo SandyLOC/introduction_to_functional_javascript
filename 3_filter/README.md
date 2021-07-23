@@ -8,7 +8,9 @@ Before getting started, make sure that you have a JavaScript console open (like 
 
 ```js
 var lessThanTen = function(numbers) {
-  // your code here
+  // your code here:
+  var filteredNum = numbers.filter(num => num < 10);
+  return filteredNum;
 };
 
 lessThanTen([1, 5, 12, 18, 94, 3, 16]); // => [1, 5, 3]
@@ -18,7 +20,9 @@ lessThanTen([1, 5, 12, 18, 94, 3, 16]); // => [1, 5, 3]
 
 ```js
 var onlyEvens = function(numbers) {
-  // your code here
+  // your code here:
+  var filterEvens = numbers.filter(num => num %2 === 0);
+  return filterEvens;
 };
 
 onlyEvens([25, 16, 12, 99, 8, 37]); // => [16, 12, 8]
@@ -28,7 +32,13 @@ onlyEvens([25, 16, 12, 99, 8, 37]); // => [16, 12, 8]
 
 ```js
 var onlyOddWords = function(words) {
-  // your code here
+  // your code here:
+  var filterOdd = words.filter(function(word){
+    if(word.length %2 != 0){
+      return word;
+    }
+  });
+  return filterOdd;
 };
 
 onlyOddWords(['hello', 'my', 'name', 'is', 'alexa']); // => ['hello', 'alexa']
@@ -38,7 +48,14 @@ onlyOddWords(['hello', 'my', 'name', 'is', 'alexa']); // => ['hello', 'alexa']
 
 ```js
 var onlyPlural = function(words) {
-  // your code here
+  // your code here:
+  var pluralized = words.filter(function(word){
+    var arr = word.split("");
+    if(arr.pop() == "s"){
+      return word;
+    }
+  });
+  return pluralized;
 };
 
 onlyPlural(['dogs', 'cat', 'humans', 'kyle']); // => ['dogs', 'humans']
@@ -55,8 +72,16 @@ var characters = [
 ]
 
 var isHero = function(chars) {
-  // your code here
+  // your code here:
+  var arr = [];
+  var hero = chars.filter(function(char){
+    if(char.hero){
+      arr.push(char.character);
+    }
+  });
+  return arr;
 };
+isHero(characters);
 ```
 
 #### More Practice
@@ -67,16 +92,29 @@ Filter is used to find certain items in a data set. Take a look at the array of 
 
 ```js
 var lowLevelSpells = function(spells) {
-  // your code here
+  // your code here:
+  var lowLevel = spells.filter(spell => spell.level <= 1);
+  return lowLevel;
 };
+
+lowLevelSpells(spells);
 ```
 
 2. Write a function that returns a new array of spells that have `"M"` as one of their components:
 
 ```js
 var componentMSpells = function(spells) {
-  // your code here
+  // your code here:
+  var component = spells.filter(function(spell){
+    var check = spell.components.filter(comp => comp == "M"); 
+    if(check == "M"){
+      return true;
+    }
+  });
+  return component;
 };
+
+componentMSpells(spells);
 ```
 
 3. Write a function that returns a new array of spells that can be used by the 'Paladin' class:
