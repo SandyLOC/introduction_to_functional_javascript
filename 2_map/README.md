@@ -40,11 +40,12 @@ var songs = [
 
 var songsBy = function(songs) {
   // your code here
+  var newArray = [];
+  songs.map(el => newArray.push(el.song + " by " + el.artist));
+  return newArray;
 };
-
 songsBy(songs); // => ['Phenom by Alex Mali', 'Too Deep by dvsn', 'Firefly by Mura Masa']
 ```
-
 
 4. Write a function that takes an array of user objects and returns an array of just the users' first names:
 
@@ -58,7 +59,10 @@ var users = [
 ];
 
 var firstNames = function(users) {
-  // your code here
+  // your code here:
+  var newArray = [];
+  users.map(name => newArray.push(name.firstName));
+  return newArray;
 };
 
 firstNames(users); // => ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie']
@@ -76,7 +80,10 @@ var users = [
 ];
 
 var fullNames = function(users) {
-  // your code here
+  // your code here:
+  var newArray = [];
+  users.map(names => newArray.push(names.firstName +" "+ names.lastName));
+  return newArray;
 };
 
 fullNames(users); // => ['Homer Simpson', 'Marge Simpson', 'Bart Simpson', 'Lisa Simpson', 'Maggie Simpson']
@@ -94,7 +101,10 @@ var users = [
 ];
 
 var fullNameObjects = function(users) {
-  // your code here
+  // your code here:
+  var newArray = [];
+  users.map(user => newArray.push({fullName:  user.firstName +" "+user.lastName}));
+  return newArray;
 };
 
 fullNameObjects(users); // => [{ fullName: 'Homer Simpson' }, { fullName: 'Marge Simpson' }, { fullName: 'Bart Simpson' }, { fullName: 'Lisa Simpson' }, { fullName: 'Maggie Simpson' }]
@@ -110,7 +120,10 @@ var products =  [
 ]
 
 var toObject = function(products) {
-  // your code here
+  // your code here:
+  var newArray = [];
+  products.map(product => newArray.push({name: product[0],price: product[1], quantity: product[2]}));
+  return newArray;
 };
 
 toObject(products); // => [
@@ -132,6 +145,13 @@ Map is often used to transform a data set to be more readable or usable. Take a 
   description: 'spell-description',
   duration: 'spell-duration',
 }
+//Your code gooes here:
+var cleanUp = function(spells) {
+var cleanArray = [];
+  spells.map(spell => cleanArray.push({name: spell.name, description: spell.desc[0], duration: spell.duration}));
+  return cleanArray;
+};
+cleanUp(spells);
 ```
 
 2. Write a function that returns an array of spell objects, with each object containing the spell's name and all of the classes and subclasses that can use the spell as subarrays:
@@ -142,4 +162,28 @@ Map is often used to transform a data set to be more readable or usable. Take a 
   classes: ['class-name-1', 'class-name-2'],
   subclasses: ['subclass-name-1', 'subclass-name-2']
 }
+
+var cleanUp = function(spells) {
+var cleanArray = [];
+  spells.map(function(spell) {
+
+    var category = spell.classes.map(function(element) { 
+    var classArr = [];
+    var value = element.name;
+    classArr.push(value);
+    return classArr.join([]);
+    });
+
+    var subcategory = spell.subclasses.map(function(element) { 
+    var subclassArr = [];
+    subclassArr.push(element.name);
+    return subclassArr.join([]);
+    });
+
+    cleanArray.push({name: spell.name, classes: category, subclasses: subcategory});
+  });
+  return cleanArray;
+};
+
+cleanUp(spells);
 ```
