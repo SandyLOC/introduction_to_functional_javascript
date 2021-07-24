@@ -10,7 +10,11 @@ Try to implement the following functions using .reduce(). If you are having trou
 
 ```js
 var sum = function(numbers) {
-  // your code here
+  // your code here:
+  var adding = numbers.reduce(function(accum, num) {
+    return accum + num;
+  }, 0);
+  return adding;
 };
 
 sum([2, 4, 6]); // => 12
@@ -20,7 +24,11 @@ sum([2, 4, 6]); // => 12
 
 ```js
 var product = function(numbers) {
-  // your code here
+  // your code here:
+  var multiply = numbers.reduce(function(accum, num) {
+    return accum * num;
+  },1);
+  return multiply;
 };
 
 product([2, 4, 6]); // => 48
@@ -29,11 +37,12 @@ product([2, 4, 6]); // => 48
 3. Write a function that takes an array of words and returns a sentence (single string) with all the element strings concatenated together:
 
 ```js
-var stringConcat = function(strings) {
-  // your code here
+  // your code here:
+  var entireString = strings.reduce(function(accum, word) {
+    return accum + " "+ word;
+  }," ");
+  return entireString;
 };
-
-stringConcat(['Hello', 'my', 'name', 'is', 'Alexandra']); // => 'Hello my name is Alexandra'
 ```
 
 4. Write a function that takes an array of users and returns an object with keys that are the users' names and values that are their email addresses:
@@ -47,7 +56,12 @@ var users = [
 ]
 
 var createEmailObject = function(users) {
-  // your code
+  // your code here:
+  var newObject = users.reduce(function(accum, user){
+    accum[user.fullName] = user.email;
+    return accum;
+  },{});
+  return newObject;
 };
 
 createEmailObject(users); // => {
@@ -66,8 +80,13 @@ Take a look at the array of spell objects in spell.js (in this folder). Using th
 
 ```js
 var spellNames = function(spells) {
-  // your code here
+  // your code here:
+  var findName = spells.reduce(function(accum, spell){
+    return accum.concat(spell.name);
+  },[]);
+  return findName;
 };
+spellNames(spells);
 ```
 
 2. Write a function that returns an array of spell objects that have a level higher than 1, with each object holding the spell name and level:
@@ -78,9 +97,18 @@ var spellNames = function(spells) {
 
 
 ```js
-var spellNames = function(spells) {
-  // your code here
+var spellLevel = function(spells) {
+  // your code here:
+  var getLevel = spells.reduce(function(accum, spell){
+    if(spell.level > 1){
+      return accum.concat({name: spell.name, level: spell.level});
+    }
+    return accum;
+  },[]);
+  return getLevel;
 };
+
+spellLevel(spells);
 ```
 
 ## Challenge Mode
