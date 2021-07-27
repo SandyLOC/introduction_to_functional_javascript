@@ -101,8 +101,8 @@ Try to write all of these exercises using .forEach() rather than `for` or `while
   Use `split` to write a function `longestWord` that takes a string as an
   argument and returns the longest word.
      ```js
-     // your code here:
      var arr = "the quick brown fox jumped over the lazy dog".split(" ");
+          // your code here:
       var longWord = arr[0];
       function longestWord(arr) {
         arr.forEach(function(word) {
