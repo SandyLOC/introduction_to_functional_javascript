@@ -100,19 +100,19 @@ Try to write all of these exercises using .forEach() rather than `for` or `while
 
   Use `split` to write a function `longestWord` that takes a string as an
   argument and returns the longest word.
-    ```js
-    // your code here:
-  var arr = "the quick brown fox jumped over the lazy dog".split(" ");
-  var longWord = arr[0];
-  function longestWord(arr) {
-     arr.forEach(function(word) {
-      if(word.length >= longWord.length) {
-        longWord = word;
-      }
-    });
-    return longWord;
-  };
-  longestWord(arr);
+     ```js
+     // your code here:
+     var arr = "the quick brown fox jumped over the lazy dog".split(" ");
+      var longWord = arr[0];
+      function longestWord(arr) {
+        arr.forEach(function(word) {
+        if(word.length >= longWord.length) {
+          longWord = word;
+         }
+        });
+        return longWord;
+     };
+     longestWord(arr);
     ```
 
 2. Write a function `remove` that accepts an *array* and an *element*, and
